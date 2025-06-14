@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/download1.png";
 import { Link, Element, Events, scrollSpy, scroller } from "react-scroll";
-import { RiMenu2Fill, RiCloseFill } from "react-icons/ri";
+// import { RiMenu2Fill, RiCloseFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 const Nav = () => {
@@ -16,7 +16,7 @@ const Nav = () => {
     }
   }, [location]);
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolling, setScrolling] = useState(false); // حالة لتتبع التمرير
+  const [scrolling, setScrolling] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -91,7 +91,7 @@ const Nav = () => {
         </div>
         <div className="w-20 md:hidden ">
           <div className=" absolute top-4     ">
-            {isOpen ? (
+            {/* {isOpen ? (
               <RiCloseFill
                 className="text-white text-3xl cursor-pointer"
                 onClick={toggleMenu}
@@ -101,7 +101,7 @@ const Nav = () => {
                 className="text-white text-3xl cursor-pointer"
                 onClick={toggleMenu}
               />
-            )}
+            )} */}
           </div>
           {isOpen && (
             <div

@@ -36,7 +36,7 @@ const upload = multer({ storage: storage });
 let cars = mongoose.model("cars", schema);
 
 // إضافة سيارة جديدة
-app.post("/cars", upload.array("Images", 15), async (req, res) => {
+app.post("/cars", upload.array("Images", 25), async (req, res) => {
   try {
     let newCar = new cars({
       Model: req.body.Model,

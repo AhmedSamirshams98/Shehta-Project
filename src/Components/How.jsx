@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 
 const How = () => {
   return (
-    <div
-      data-aos="slide-up"
-      className=" h-[633px] mb-4  w-full  flex flex-col items-center"
-    >
+    <div className=" h-[633px] mb-4  w-full  flex flex-col items-center">
       <h1 className="font-graphik-arabicbb mb-3 mt-6 font-bold  text-[32px] text-center">
         كيف يمكنك طلب سيارتك المخصصة؟
       </h1>

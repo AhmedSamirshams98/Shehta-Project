@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
-import lazyload from "react-lazyload";
+import React from "react";
+
 import image from "../assets/homeimage.jpeg";
 import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Dreamcar = () => {
   return (

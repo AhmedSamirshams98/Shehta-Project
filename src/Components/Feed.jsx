@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import Slider from "react-slick"; // Slider for inner carousel
-import "slick-carousel/slick/slick.css"; // Slider styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import image from "../assets/shehtaimgg.png";
 
@@ -22,8 +22,8 @@ const Feed = () => {
         interval={5000}
         showIndicators={false}
         emulateTouch
-        centerMode={true} // يتيح لنا عرض جزء من العنصرين الآخرين
-        centerSlidePercentage={60} // يحدد كم من العرض يحتله العنصر الرئيسي
+        centerMode={true} 
+        centerSlidePercentage={60} 
         showThumbs={false}
         showStatus={false}
       >

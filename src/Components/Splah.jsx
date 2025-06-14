@@ -1,41 +1,23 @@
-import React, { useEffect, useState } from "react";
-import logo from "../assets/download1.png";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import car from "../assets/lastcar.svg";
 
-const Splah = () => {
-  const [progress, setProgress] = useState(0);
+const Splash = () => {
+  const logoRef = useRef();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress >= 200) {
-          clearInterval(interval);
-          return 100;
-        }
-        return oldProgress + 1; // Increase progress by 1% every interval
-      });
-    }, 30); // Update progress every 30 milliseconds
+  gsap.to(logoRef.current, {
+    duration: 3,
+    x: 900,
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, []);
+    ease: "bounce",
+  });
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#282828]">
-      {/* Your logo or splash screen content */}
-      <div className="flex flex-col items-center justify-center">
-        <img src={logo} alt="logo" />
-        <h1 className="text-[24px] mt-4 font-graphik-arabicbb  text-white">
-          شحتة للتجارة
-        </h1>
-      </div>
-
-      {/* Loading Bar */}
-      <div className="w-[12%] mt-5 h-2 bg-white rounded-full overflow-hidden">
-        <div
-          className="h-full bg-[#FDB800]"
-          style={{ width: `${progress}%`, transition: "width 0.2s ease" }}
-        />
-      </div>
+    <div className="bg-[#FDB800] flex flex-row items-center gap-10">
+      {/* ربط الصورة بـ useRef */}
+      <img src={car} ref={logoRef} alt="Car Logo" />
     </div>
   );
 };
 
-export default Splah;
+export default Splash;

@@ -28,12 +28,10 @@ const View = () => {
       id="about"
       className="bg-white grid grid-cols-1 justify-items-center  md:flex flex-col items-center m-auto   py-8 lg:flex lg:flex-row lg:items-start lg:p-16 mt-4   "
     >
-      <div
-        data-aos="fade-left"
-        className=" w-[322px] mx-auto   md:w-[352px] h-[437px]  md:h-[478px]"
-      >
+      <div className=" w-[322px] mx-auto   md:w-[352px] h-[437px]  md:h-[478px]">
         <Slider {...sliderSettings}>
           <img
+          rel="preload"
             src={shehtaimg1}
             alt="Slide 1"
             className=" w-[310px] rounded-[42px] md:w-[352px] h-[437px] md:h-[478px]"
@@ -81,10 +79,7 @@ const View = () => {
         </Slider>
       </div>
 
-      <div
-        data-aos="fade-right"
-        className=" flex flex-col items-end gap-2 mt-10 px-[3%]  "
-      >
+      <div className=" flex flex-col items-end gap-2 mt-10 px-[3%]  ">
         <h1 className=" text-[24px] md:text-[32px]  scroll-smooth px-3 text-[#000000] font-bold font-graphik-arabicbb">
           ✨ لمحة عن شحتة للتجارة
         </h1>

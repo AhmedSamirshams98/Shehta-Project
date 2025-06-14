@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { lazy, useEffect, useRef, useState } from "react";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,10 +12,9 @@ import { motion } from "framer-motion";
 const Exhibits = ({ cars }) => {
   const [randomCars, setRandomCars] = useState([]);
 
-  // اختيار 5 سيارات عشوائية عند تحميل المكون
   useEffect(() => {
     if (cars && cars.length > 0) {
-      setRandomCars(cars.slice(0, 5)); // اختيار أول 5 سيارات
+      setRandomCars(cars.slice(0, 5));
     }
   }, [cars]);
 
@@ -27,39 +26,44 @@ const Exhibits = ({ cars }) => {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
-    lazyload: "ondemand",
+    lazyLoad: "ondemand",
   };
   function openDialer() {
     var userAgent = navigator.userAgent;
 
-    // التحقق من وجود نظام هواوي أو HarmonyOS أو أجهزة الأندرويد التقليدية
     if (userAgent.match(/Android|iPhone|iPad|iPod|Huawei|HarmonyOS/i)) {
       window.location.href = "tel:+201003060607";
     } else {
       alert("هذه الميزة متاحة فقط على الأجهزة المحمولة.");
     }
   }
+  const [width, setWidth] = useState(0);
 
   const carouselRef = useRef();
 
-  const [width, setWidth] = useState(0);
   useEffect(() => {
-    setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-    console.log(carouselRef.current.offsetWidth);
-    console.log(carouselRef.current.scrollWidth);
-    console.log(width);
-  }, []);
+    if (carouselRef.current && randomCars.length > 0) {
+      console.log("scrollWidth:", carouselRef.current.scrollWidth);
+      console.log("offsetWidth:", carouselRef.current.offsetWidth);
+      setWidth(
+        carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+      );
+      console.log(width);
+    }
+  }, [randomCars]);
+
   function openWhatsApp(carName) {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
-    const message = `مرحبا، أود التحدث معك احتاج سياره ${carName}.`; // الرسالة التي تريد إرسالها
+    const phoneNumber = "+201003060607";
+    const message = `مرحبا، أود التحدث معك احتاج سياره ${carName}.`;
+    إرسالها;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");
   }
   function openWhatsprice(carName) {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
-    const message = `مرحبا، أود التحدث معك احتاج معرفة سعر سيارة ${carName}.`; // الرسالة التي تريد إرسالها
+    const phoneNumber = "+201003060607";
+    const message = `مرحبا، أود التحدث معك احتاج معرفة سعر سيارة ${carName}.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -77,12 +81,12 @@ const Exhibits = ({ cars }) => {
         </h1>
       </div>
       <motion.div
+        className="    w-full  "
         ref={carouselRef}
-        className="  w-full     "
         style={{ direction: "rtl" }}
       >
         <motion.div
-          className="flex flex-row pr-[5%]  "
+          className="flex flex-row pr-[6%]  "
           drag="x"
           dragConstraints={{ left: 0, right: width }}
         >

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import image from "../assets/bg.png";
-import Slider from "react-slick"; // Slider for inner carousel
-import "slick-carousel/slick/slick.css"; // Slider styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import whats from "../assets/whats1.svg";
 import phone from "../assets/phonee.svg";
@@ -12,7 +12,6 @@ const ClickedCar = ({ cars }) => {
   function openDialer() {
     var userAgent = navigator.userAgent;
 
-    // التحقق من وجود نظام هواوي أو HarmonyOS أو أجهزة الأندرويد التقليدية
     if (userAgent.match(/Android|iPhone|iPad|iPod|Huawei|HarmonyOS/i)) {
       window.location.href = "tel:+201003060607";
     } else {
@@ -22,17 +21,17 @@ const ClickedCar = ({ cars }) => {
     }
   }
   function openWhatsApp() {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
-    const message = `السلام عليكم عندي استفسار بخصوص سياره    ${car.Model}.`; // الرسالة التي تريد إرسالها
+    const phoneNumber = "+201003060607";
+    const message = `السلام عليكم عندي استفسار بخصوص سياره    ${car.Model}.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");
   }
 
-  function openWhatsprice({ car }) {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
-    const message = `السلام عليكم كم سعر السياره ${car.Model}  .`; // الرسالة التي تريد إرسالها
+  function openWhatsprice() {
+    const phoneNumber = "+201003060607";
+    const message = `السلام عليكم كم سعر السياره ${car.Model}  .`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -46,12 +45,12 @@ const ClickedCar = ({ cars }) => {
   const [fullscreenImage, setFullscreenImage] = useState(null);
   const sliderSettings = {
     infinite: true,
-    speed: 500, // سرعة الانتقال بين الشرائح
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // تفعيل التمرير التلقائي
+    autoplay: true,
     autoplaySpeed: 1500,
-    arrows: false, // السرعة بين كل تمريرة بالميلي ثانية
+    arrows: false,
   };
 
   const handleImageClick = (image) => {
@@ -180,7 +179,9 @@ const ClickedCar = ({ cars }) => {
                       src={`http://localhost:3000/${image}`}
                       alt={`Slide ${index + 1}`}
                       className="rounded-[26px] h-[300px] md:h-[720px] object-cover cursor-pointer"
-                      onClick={() => handleImageClick(image)}
+                      onClick={() =>
+                        handleImageClick(`http://localhost:3000/${image}`)
+                      }
                     />
                   ))}
               </Slider>

@@ -24,22 +24,16 @@
   animation: fadeOut 1s ease-in-out 3s forwards; /* Fade out after 3 seconds */
 }
 
-
-
-
-
-
-
 .custom-dots li button:before {
-    font-size: 12px;
-    color: #888; /* لون النقاط غير النشطة */
-  }
-  
-  .custom-dots li.slick-active button:before {
-    color: #fdb800; /* لون النقاط النشطة */
-  }
+  font-size: 12px;
+  color: #888; /* لون النقاط غير النشطة */
+}
 
-  /* CSS to customize the scrollbar */
+.custom-dots li.slick-active button:before {
+  color: #fdb800; /* لون النقاط النشطة */
+}
+
+/* CSS to customize the scrollbar */
 .modal-scrollbar::-webkit-scrollbar {
   width: 10px;
 }
@@ -54,29 +48,35 @@
   border: 2px solid #fdb800; /* Border around the thumb */
 }
 @font-face {
-  font-family: 'GraphikArabic-Bold';
-  src: url('../src/assets/fonts/GraphikArabic-Bold.woff2') format('woff2');
-      
+  font-family: "GraphikArabic-Bold";
+  src: url("../src/assets/fonts/GraphikArabic-Bold.woff2") format("woff2");
+
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'GraphikArabic-Black';
-  src: url('../src/assets/fonts/GraphikArabic-Black.woff2') format('woff2');
-      
+  font-family: "GraphikArabic-Black";
+  src: url("../src/assets/fonts/GraphikArabic-Black.woff2") format("woff2");
+
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'GraphikArabic-Medium';
-  src: url('../src/assets/fonts/GraphikArabic-Medium.woff2') format('woff2');
-      
+  font-family: "GraphikArabic-Medium";
+  src: url("../src/assets/fonts/GraphikArabic-Medium.woff2") format("woff2");
+
   font-weight: normal;
   font-style: normal;
 }
+/* تخصيص شريط التمرير على متصفحات Webkit (مثل Chrome و Safari) */
+::-webkit-scrollbar {
+  width: 9px;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #282828; /* اللون الأحمر */
+}
 
-
-
-
-
+::-webkit-scrollbar-track {
+  background-color: #fdb800; /* اللون الأصفر للمسار */
+}

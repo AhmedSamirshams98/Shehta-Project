@@ -4,12 +4,12 @@ import image from "../assets/bg.png";
 import exit from "../assets/union.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // استخدام Axios
+import axios from "axios";
 import Footer from "./Footer";
 
 const Form = () => {
   const navigate = useNavigate();
-  const [isButtonClicked, setIsButtonClicked] = useState(false); // حالة جديدة
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -20,13 +20,11 @@ const Form = () => {
 
   const [isPhoneValid, setIsPhoneValid] = useState(true);
 
-  // دالة للتحقق من صحة رقم الهاتف
   const validatePhone = (phone) => {
     const isValid = phone.length === 11;
     setIsPhoneValid(isValid);
   };
 
-  // دالة للتعامل مع تغييرات الإدخال
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -36,7 +34,6 @@ const Form = () => {
     }
   };
 
-  // التحقق من أن جميع الحقول تم ملؤها
   const isFormComplete =
     formData.name &&
     formData.phone &&
@@ -45,7 +42,6 @@ const Form = () => {
     formData.description &&
     isPhoneValid;
 
-  // دالة لإرسال الطلب بالبريد الإلكتروني
   const sendEmail = async (e) => {
     e.preventDefault();
     if (!isFormComplete) {
@@ -55,7 +51,7 @@ const Form = () => {
 
     setIsButtonClicked(true);
 
-    console.log("Sending data:", formData); // سجل البيانات المرسلة
+    console.log("Sending data:", formData);
 
     try {
       const response = await axios.post(

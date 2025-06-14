@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from "react";
 import image from "../assets/bg.png";
 
-import axios from "axios";
-
 import "../../src/App.css";
 
-import "react-lazy-load-image-component/src/effects/blur.css";
-
-import Slider from "react-slick"; // Slider for inner carousel
-import "slick-carousel/slick/slick.css"; // Slider styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import whats from "../assets/whats1.svg";
 import phone from "../assets/phonee.svg";
 import { Link } from "react-router-dom";
 import exit from "../assets/union.svg";
-import AOS from "aos";
-import LazyLoad from "react-lazyload";
 
 const All = ({ cars }) => {
   const sliderSettings = {
     dots: true,
     dotsClass: "custom-dots slick-dots",
     infinite: true,
-    speed: 500, // سرعة الانتقال بين الشرائح
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // تفعيل التمرير التلقائي
+    autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
-    lazyLoad: "ondemand", // السرعة بين كل تمريرة بالميلي ثانية
   };
   function openWhatsApp(carName) {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
-    const message = `مرحبا، أود التحدث معك احتاج سياره ${carName}.`; // الرسالة التي تريد إرسالها
+    const phoneNumber = "+201003060607";
+    const message = `مرحبا، أود التحدث معك احتاج سياره ${carName}.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
@@ -43,7 +36,6 @@ const All = ({ cars }) => {
   function openDialer() {
     var userAgent = navigator.userAgent;
 
-    // التحقق من وجود نظام هواوي أو HarmonyOS أو أجهزة الأندرويد التقليدية
     if (userAgent.match(/Android|iPhone|iPad|iPod|Huawei|HarmonyOS/i)) {
       window.location.href = "tel:+201003060607";
     } else {
@@ -51,19 +43,13 @@ const All = ({ cars }) => {
     }
   }
   function openWhatsprice(carName) {
-    const phoneNumber = "+201003060607"; // رقم الهاتف مع رمز الدولة
+    const phoneNumber = "+201003060607";
     const message = `مرحبا، أود التحدث معك احتاج معرفة سعر سيارة  ${carName}.`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");
   }
-  // useEffect(() => {
-  //   AOS.init({
-  //     duration: 1200, // Animation duration (in milliseconds)
-  //     once: true, // Animation happens only once (on first scroll)
-  //   });
-  // }, []);
 
   return (
     <>
@@ -91,14 +77,11 @@ const All = ({ cars }) => {
                   {car.Images.map((image, imgIndex) => (
                     <div key={imgIndex}>
                       <Link to={`/cars/${car._id}`}>
-                        <LazyLoad height={200} offset={100}>
-                          <img
-                            src={`http://localhost:3000/${image}`}
-                            loading="eager"
-                            alt={`Car ${car._id} Image ${imgIndex + 1}`}
-                            className="w-[340px] h-[318px] rounded-[32px]"
-                          />
-                        </LazyLoad>
+                        <img
+                          src={`http://localhost:3000/${image}`}
+                          alt={`Car ${car._id} Image ${imgIndex + 1}`}
+                          className="w-[340px] h-[318px] rounded-[32px]"
+                        />
                       </Link>
                     </div>
                   ))}

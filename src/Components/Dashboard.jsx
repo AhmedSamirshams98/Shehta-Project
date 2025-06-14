@@ -102,123 +102,124 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
   };
 
   return (
-    <div className="w-[100%] flex items-center p-4">
-      <div className="flex flex-row justify-center  w-[100%]">
+    <div className="w-[100%] h-[100vh] flex items-center p-4">
+      <div className="flex flex-row justify-center mt-32  w-[100%]">
         <div className="w-[50%] flex flex-row gap-10 ">
-          {cars.map((car) => (
-            <div>
-              <div className="flex flex-col items-center">
-                <h1>{car.Model}</h1>
-                <h1>{car.Brand}</h1>
-                <h1>{car.Km}</h1>
-                <h1>{car.Year}</h1>
-                {car.Images.map((image) => (
-                  <img
-                    className="w-[110px] h-[110px]"
-                    src={`http://localhost:3000/${image}`}
-                  />
-                ))}
+          {/* {cars.map((car) => (
+              <div>
+                <div className="flex flex-col items-center">
+                  <h1>{car.Model}</h1>
+                  <h1>{car.Brand}</h1>
+                  <h1>{car.Km}</h1>
+                  <h1>{car.Year}</h1>
+                  {car.Images.map((image) => (
+                    <img
+                      className="w-[110px] h-[110px]"
+                      src={`http://localhost:3000/${image}`}
+                    />
+                  ))}
+                </div>
+                <button onClick={() => dataToEdit(car)}>Edit</button>
+                <button onClick={() => deleteCar(car._id)}>Delete</button>
               </div>
-              <button onClick={() => dataToEdit(car)}>Edit</button>
-              <button onClick={() => deleteCar(car._id)}>Delete</button>
-            </div>
-          ))}
+            ))} */}
         </div>
-        <form onSubmit={handleSubmit} className="w-[50%] space-y-4">
-          <h2 className="text-2xl mb-4">Update Car Information</h2>
+        <div className="flex flex-row w-full gap-24">
+          <form onSubmit={handleSubmit} className="w-[50%] space-y-4">
+            <h2 className="text-2xl mb-4">Update Car Information</h2>
 
-          <div>
-            <label htmlFor="model" className="block text-sm font-medium">
-              Model
-            </label>
+            <div>
+              <label htmlFor="model" className="block text-sm font-medium">
+                Model
+              </label>
+              <input
+                type="text"
+                id="model"
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="brand" className="block text-sm font-medium">
+                Brand
+              </label>
+              <input
+                type="text"
+                id="brand"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="km" className="block text-sm font-medium">
+                Kilometers
+              </label>
+              <input
+                type="number"
+                id="km"
+                value={km}
+                onChange={(e) => setKm(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="year" className="block text-sm font-medium">
+                Year
+              </label>
+              <input
+                type="number"
+                id="year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
             <input
-              type="text"
-              id="model"
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="bg-red-400"
+              placeholder="Insert new Images"
+              type="file"
+              multiple
+              onChange={imagechangetofile}
             />
-          </div>
+            <div className="flex gap-2">
+              {images.map((image, index) => (
+                <div key={index} className="relative">
+                  <img
+                    className="w-[100px] h-[100px] object-cover"
+                    // تحقق إذا كانت الصورة عبارة عن ملف جديد مرفوع أو رابط من الخادم
+                    src={
+                      typeof image === "string"
+                        ? `http://localhost:3000/${image}` // الصورة من الخادم
+                        : URL.createObjectURL(image) // الصورة ملف جديد مرفوع
+                    }
+                    alt={`new-car-image-${index}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleEditImageDelete(index)}
+                    className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
 
-          <div>
-            <label htmlFor="brand" className="block text-sm font-medium">
-              Brand
-            </label>
-            <input
-              type="text"
-              id="brand"
-              value={brand}
-              onChange={(e) => setBrand(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="km" className="block text-sm font-medium">
-              Kilometers
-            </label>
-            <input
-              type="number"
-              id="km"
-              value={km}
-              onChange={(e) => setKm(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="year" className="block text-sm font-medium">
-              Year
-            </label>
-            <input
-              type="number"
-              id="year"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
-          <input
-            className="bg-red-400"
-            placeholder="Insert new Images"
-            type="file"
-            multiple
-            onChange={imagechangetofile}
-          />
-          <div className="flex gap-2">
-            {images.map((image, index) => (
-              <div key={index} className="relative">
-                <img
-                  className="w-[100px] h-[100px] object-cover"
-                  // تحقق إذا كانت الصورة عبارة عن ملف جديد مرفوع أو رابط من الخادم
-                  src={
-                    typeof image === "string"
-                      ? `http://localhost:3000/${image}` // الصورة من الخادم
-                      : URL.createObjectURL(image) // الصورة ملف جديد مرفوع
-                  }
-                  alt={`new-car-image-${index}`}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleEditImageDelete(index)}
-                  className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
-                >
-                  X
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-500 text-white rounded"
-          >
-            Update Car
-          </button>
-        </form>
-        <form onSubmit={AddNewCar} className="w-[50%] space-y-4">
-          <h2 className="text-2xl mb-4">Add New Car</h2>
-          {/* <div>
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-500 text-white rounded"
+            >
+              Update Car
+            </button>
+          </form>
+          <form onSubmit={AddNewCar} className="w-[50%] space-y-4">
+            <h2 className="text-2xl mb-4">Add New Car</h2>
+            {/* <div>
             <label htmlFor="carId" className="block text-sm font-medium">
               Car ID
             </label>
@@ -232,90 +233,91 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
             />
           </div> */}
 
-          <div>
-            <label htmlFor="model" className="block text-sm font-medium">
-              Model
-            </label>
-            <input
-              type="text"
-              id="model"
-              // value={model}
-              onChange={(e) => setNewCarModel(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
+            <div>
+              <label htmlFor="model" className="block text-sm font-medium">
+                Model
+              </label>
+              <input
+                type="text"
+                id="model"
+                // value={model}
+                onChange={(e) => setNewCarModel(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="brand" className="block text-sm font-medium">
-              Brand
-            </label>
-            <input
-              type="text"
-              id="brand"
-              // value={brand}
-              onChange={(e) => setNewCarBrand(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
+            <div>
+              <label htmlFor="brand" className="block text-sm font-medium">
+                Brand
+              </label>
+              <input
+                type="text"
+                id="brand"
+                // value={brand}
+                onChange={(e) => setNewCarBrand(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="km" className="block text-sm font-medium">
-              Kilometers
-            </label>
-            <input
-              type="number"
-              id="km"
-              // value={km}
-              onChange={(e) => setNewCarKm(e.target.value)}
-              className="w-full p-2 border rounded"
-            />
-          </div>
+            <div>
+              <label htmlFor="km" className="block text-sm font-medium">
+                Kilometers
+              </label>
+              <input
+                type="number"
+                id="km"
+                // value={km}
+                onChange={(e) => setNewCarKm(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="year" className="block text-sm font-medium">
-              Year
-            </label>
+            <div>
+              <label htmlFor="year" className="block text-sm font-medium">
+                Year
+              </label>
+              <input
+                type="number"
+                id="year"
+                // value={year}
+                onChange={(e) => setNewCarYear(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
             <input
-              type="number"
-              id="year"
-              // value={year}
-              onChange={(e) => setNewCarYear(e.target.value)}
-              className="w-full p-2 border rounded"
+              className="bg-red-400"
+              placeholder="Insert new Images"
+              type="file"
+              multiple
+              onChange={newCarImagesToChange}
             />
-          </div>
-          <input
-            className="bg-red-400"
-            placeholder="Insert new Images"
-            type="file"
-            multiple
-            onChange={newCarImagesToChange}
-          />
-          <div className="flex gap-2">
-            {newCarImages.map((image, index) => (
-              <div key={index} className="relative">
-                <img
-                  className="w-[100px] h-[100px] object-cover"
-                  src={URL.createObjectURL(image)}
-                  alt={`new-car-image-${index}`}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleImageDelete(index)}
-                  className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
-                >
-                  X
-                </button>
-              </div>
-            ))}
-          </div>
+            <div className="flex gap-2">
+              {newCarImages.map((image, index) => (
+                <div key={index} className="relative">
+                  <img
+                    className="w-[100px] h-[100px] object-cover"
+                    src={URL.createObjectURL(image)}
+                    alt={`new-car-image-${index}`}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleImageDelete(index)}
+                    className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                  >
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
 
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-500 text-white rounded"
-          >
-            Add Car
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="w-full py-2 bg-blue-500 text-white rounded"
+            >
+              Add Car
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
