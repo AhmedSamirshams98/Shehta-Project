@@ -102,6 +102,7 @@ const Footer = () => {
         <a href="https://wa.me/201000094180">
           <h1 className="text-center text-gray-500 underline">
             Made With ❤️ By: Rafeeq.Academy Team chixo
+            hello i am chixo 
           </h1>
         </a>
       </div>
