@@ -149,7 +149,7 @@ const Nav = () => {
                 duration={500}
                 className="text-[24px] scroll-smooth  text-black  font-graphik-arabicbb font-bold not-italic"
               >
-                اطلب سيارتك
+                 اطلب سيارتك الان
               </Link>
             </div>
           )}
