@@ -78,7 +78,7 @@ const All = ({ cars }) => {
                     <div key={imgIndex}>
                       <Link to={`/cars/${car._id}`}>
                         <img
-                          src={`http://localhost:3000/${image}`}
+                          src={`https://api.shehtatrading.com${image}`}
                           alt={`Car ${car._id} Image ${imgIndex + 1}`}
                           className="w-[340px] h-[318px] rounded-[32px]"
                         />

@@ -176,11 +176,11 @@ const ClickedCar = ({ cars }) => {
                     <img
                       key={index}
                       loading="lazy"
-                      src={`http://localhost:3000/${image}`}
+                      src={`https://api.shehtatrading.com${image}`}
                       alt={`Slide ${index + 1}`}
                       className="rounded-[26px] h-[300px] md:h-[720px] object-cover cursor-pointer"
                       onClick={() =>
-                        handleImageClick(`http://localhost:3000/${image}`)
+                        handleImageClick(`https://api.shehtatrading.com${image}`)
                       }
                     />
                   ))}

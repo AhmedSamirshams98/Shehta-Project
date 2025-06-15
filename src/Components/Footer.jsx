@@ -1,8 +1,5 @@
-
 import logo from "../assets/logofo.svg";
-import num from "../assets/num.png";
-import whats from "../assets/whats.svg";
-import add from "../assets/"
+
 import map from "../assets/map.svg";
 import face from "../assets/face.svg";
 import insta from "../assets/insta.svg";
@@ -102,7 +99,6 @@ const Footer = () => {
         <a href="https://wa.me/201000094180">
           <h1 className="text-center text-gray-500 underline">
             Made With ❤️ By: Rafeeq.Academy Team chixo
-            hello i am chixo 
           </h1>
         </a>
       </div>

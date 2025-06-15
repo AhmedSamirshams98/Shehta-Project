@@ -97,7 +97,7 @@ const Exhibits = ({ cars }) => {
                   {carItem.Images.map((image, imgIndex) => (
                     <motion.div key={imgIndex}>
                       <img
-                        src={`http://localhost:3000/${image}`}
+                        src={`https://api.shehtatrading.com${image}`}
                         className="w-[210px] object-cover md:w-[348px] h-[209px] md:h-[346px] rounded-md"
                       />
                     </motion.div>

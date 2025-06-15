@@ -55,7 +55,7 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
     }
     try {
       const response = await axios.put(
-        `http://localhost:3000/cars/${carId}`,
+        `https://api.shehtatrading.com/cars/${carId}`,
         formData
         // {
         //   headers: { "Content-Type": "multipart/form-data" },
@@ -82,7 +82,7 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
     });
     try {
       const response = await axios.post(
-        "http://localhost:3000/cars",
+        "https://api.shehtatrading.com/cars",
         newCarData
       );
 
@@ -94,7 +94,7 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
   };
   const deleteCar = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/cars/${id}`);
+      await axios.delete(`https://api.shehtatrading.com/cars/${id}`);
       fetchCars();
     } catch (error) {
       alert("error deleting car", error);
@@ -194,7 +194,7 @@ const Dashboard = ({ fetchCars, cars, setCars }) => {
                     // تحقق إذا كانت الصورة عبارة عن ملف جديد مرفوع أو رابط من الخادم
                     src={
                       typeof image === "string"
-                        ? `http://localhost:3000/${image}` // الصورة من الخادم
+                        ? `https://api.shehtatrading.com${image}` // الصورة من الخادم
                         : URL.createObjectURL(image) // الصورة ملف جديد مرفوع
                     }
                     alt={`new-car-image-${index}`}
