@@ -98,7 +98,7 @@ const Footer = () => {
       <div className="bg-[#282828] p-4 ">
         <a href="https://wa.me/201000094180">
           <h1 className="text-center text-gray-500 underline">
-            Made With ❤️ By: Rafeeq.Academy Team chixo
+            Made With ❤️ By: Rafeeq.Academy Team 
           </h1>
         </a>
       </div>
